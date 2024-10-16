@@ -13,10 +13,6 @@ export default function Layout(props: { children: React.ReactNode }) {
       <main className="flex-1">{props.children}</main>
       <Footer
         builtBy="Kelompok 5"
-        builtByLink=""
-        githubLink=""
-        twitterLink=""
-        linkedinLink=""
       />
     </div>
   );

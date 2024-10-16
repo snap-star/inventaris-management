@@ -1,5 +1,4 @@
-import { Metadata } from "next";
-
+'use client'
 import { RecentSales } from "@/app/dashboard/[teamId]/(overview)/recent-sales";
 import {
   Card,
@@ -9,12 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Graph } from "./graph";
-import {InventoryOverview} from "./overview";
-
-export const metadata: Metadata = {
-  title: "Dashboard",
-  description: "Melihat Data Barang.",
-};
+import InventoryOverview from "@/components/overview";
 
 export default function DashboardPage() {
   return (
@@ -26,7 +20,7 @@ export default function DashboardPage() {
           </div>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             <Card>
-              <InventoryOverview/>
+              <InventoryOverview />
             </Card>
           </div>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">

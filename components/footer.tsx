@@ -8,10 +8,6 @@ import Link from "next/link";
 
 export function Footer(props: {
   builtBy: string;
-  builtByLink: string;
-  githubLink: string;
-  twitterLink: string;
-  linkedinLink: string;
 }) {
   return (
     <footer className="border-t">
@@ -20,9 +16,6 @@ export function Footer(props: {
           <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
             Built by{" "}
             <a
-              href={props.builtByLink}
-              target="_parent"
-              rel="noreferrer"
               className="font-medium bold underline underline-offset-4"
             >
               {props.builtBy}

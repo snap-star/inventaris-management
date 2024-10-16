@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { supabase } from '../lib/supabaseClient'; // Pastikan path ini benar sesuai struktur project
-
+import { supabase } from '../lib/supabaseClient';
 const InventoryInputPage = () => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
@@ -33,8 +32,8 @@ const InventoryInputPage = () => {
       setName('');
       setDescription('');
       setQuantity(0);
-    } catch (err) {
-      setError(`Error: ${err.message}`);
+    } catch (err: unknown) { // Explicitly type the 'err' variable
+      setError(`Error: ${(err as Error).message}`);
     }
   };
 
