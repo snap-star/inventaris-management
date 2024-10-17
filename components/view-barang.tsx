@@ -76,7 +76,7 @@ const InventoryInputPage = () => {
                 <TableCell>{item.description}</TableCell>
                 <TableCell>{item.thn_pengadaan}</TableCell>
                 <TableCell>{item.quantity}</TableCell>
-                <TableCell>{item.harga_barang}</TableCell>
+                <TableCell>{item.harga_barang.toLocaleString ("id-ID", { style: "currency", currency: "IDR"})}</TableCell>
                 <TableCell>
                   <Button onClick={() => deleteItem(item.id)}>Delete</Button>
                 </TableCell>
