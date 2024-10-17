@@ -12,7 +12,7 @@ export default async function IndexPage() {
           <p className="font-bold text-xl">Setup Diperlukan</p>
           <p className="">
             {
-              "To start using this project, please enable client-side team creation in the Stack Auth dashboard (Project > Team Settings). This message will disappear once the feature is enabled."
+              "Untuk memulai project ini, silahkan enable client-side team creation pada Stack Auth dashboard (Project > Team Settings). Pesan ini akan otomatis hilang jika feature sudah di enabled."
             }
           </p>
         </div>
@@ -25,7 +25,7 @@ export default async function IndexPage() {
       <Hero
         title="Inventaris Management System"
         subtitle="Kelola Barang Dengan Cepat dan Mudah"
-        capsuleText="Aplikasi"
+        capsuleText="Ver.1.0.0"
         capsuleLink=""
         primaryCtaText="Daftar Sekarang"
         primaryCtaLink={stackServerApp.urls.signUp}
@@ -36,7 +36,7 @@ export default async function IndexPage() {
       <div id="features" />
       <FeatureGrid
         title="Fitur"
-        subtitle="Powerfull Digital Management Inventory"
+        subtitle="Digital Management Inventory"
         items={[
           {
             icon: (
@@ -70,7 +70,7 @@ export default async function IndexPage() {
                 ></line>
               </svg>
             ),
-            title: "Shadcn UI",
+            title: "User Interface",
             description:
               "Desain Menarik Mudah Di Lihat.",
           },
