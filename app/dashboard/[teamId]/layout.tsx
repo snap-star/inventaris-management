@@ -8,7 +8,7 @@ import { useParams, useRouter } from "next/navigation";
 const navigationItems: SidebarItem[] = [
   {
     name: "Home",
-    href: '/dashboard/${team.id}',
+    href: "/",
     icon: HomeIcon,
     type: "item",
   },
