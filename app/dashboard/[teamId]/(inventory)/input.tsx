@@ -11,16 +11,15 @@ import {
 export default function Page() {
   return (
     <div>
-      <Card>
         <CardHeader>
-          <CardTitle>Inventory</CardTitle>
+          <CardTitle>Input Data Barang</CardTitle>
           <CardDescription>
-            <InventoryInputPage />
+            Input data barang baru dengan mengisi form di bawah ini.
           </CardDescription>
+          <CardContent>
+            <InventoryInputPage />
+          </CardContent>
         </CardHeader>
-        <CardContent>
-        </CardContent>
-      </Card>
     </div>
   );
 }

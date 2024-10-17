@@ -25,7 +25,7 @@ export function PageClient() {
         <div className="max-w-xs w-full">
           <h1 className="text-center text-2xl font-semibold">Selamat Datang!</h1>
           <p className="text-center text-gray-500">
-            Buat Nama Tokomu untuk memulai
+            Buat Nama Toko/Organisasi/Perusahaan untuk memulai
           </p>
           <form
             className="mt-4"
@@ -35,14 +35,14 @@ export function PageClient() {
             }}
           >
             <div>
-              <Label className="text-sm">Nama Toko</Label>
+              <Label className="text-sm">Nama</Label>
               <Input
-                placeholder="Nama Toko"
+                placeholder="Nama Toko/Organisasi/Perusahaan"
                 value={teamDisplayName}
                 onChange={(e) => setTeamDisplayName(e.target.value)}
               />
             </div>
-            <Button className="mt-4 w-full">Buat Toko</Button>
+            <Button className="mt-4 w-full">Create</Button>
           </form>
         </div>
       </div>

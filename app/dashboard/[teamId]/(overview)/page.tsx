@@ -1,5 +1,4 @@
 'use client'
-import { RecentSales } from "@/app/dashboard/[teamId]/(overview)/recent-sales";
 import {
   Card,
   CardContent,
@@ -7,8 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Graph } from "./graph";
-import InventoryOverview from "@/components/overview";
+import InventoryOverview from "@/components/view-barang";
 
 export default function DashboardPage() {
   return (
@@ -19,30 +17,12 @@ export default function DashboardPage() {
             <h2 className="text-2xl font-bold tracking-tight">Overview</h2>
           </div>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            <Card>
+            <CardHeader>
+              <CardTitle>Data Barang</CardTitle>
+            </CardHeader>
+            <CardContent className="col-span-3">
               <InventoryOverview />
-            </Card>
-          </div>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-            <Card className="col-span-4">
-              <CardHeader>
-                <CardTitle>Overview</CardTitle>
-              </CardHeader>
-              <CardContent className="pl-2">
-                <Graph />
-              </CardContent>
-            </Card>
-            <Card className="col-span-3">
-              <CardHeader>
-                <CardTitle>Recent Sales</CardTitle>
-                <CardDescription>
-                  You made 265 sales this month.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <RecentSales />
-              </CardContent>
-            </Card>
+            </CardContent>
           </div>
         </div>
       </div>
