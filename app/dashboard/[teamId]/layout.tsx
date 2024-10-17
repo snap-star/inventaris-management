@@ -2,14 +2,14 @@
 
 import SidebarLayout, { SidebarItem } from "@/components/sidebar-layout";
 import { SelectedTeamSwitcher, useUser } from "@stackframe/stack";
-import { BadgePercent, BarChart4, Columns3, Globe, Locate, Package, Settings2, ShoppingBag, ShoppingCart, Users } from "lucide-react";
+import { BadgePercent, BarChart4, Columns3, Globe, HomeIcon, Locate, Package, Settings2, ShoppingBag, ShoppingCart, Users } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 
 const navigationItems: SidebarItem[] = [
   {
-    name: "Overview",
-    href: "/dashboard/[teamId]",
-    icon: Globe,
+    name: "Home",
+    href: '/dashboard/${team.id}',
+    icon: HomeIcon,
     type: "item",
   },
   {
