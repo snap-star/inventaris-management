@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import { supabase } from '../lib/supabaseClient'; // Pastikan path sesuai dengan struktur project
-import { Label } from 'recharts';
+import { supabase } from '../lib/supabaseClient'; // Pastikan path sesuai dengan struktur project Anda
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import {
   Table,
@@ -49,13 +48,12 @@ const InventoryOverview = () => {
 
   return (
     <div>
-      <Label>
-      <h1>Inventory Overview</h1>
-      </Label>
+      <Card>
+        <h1>Inventory Overview</h1>
       {items.length === 0 ? (
         <p>No items found.</p>
-      ) : (
-        <Table>
+        ) : (
+          <Table>
           <TableHead>
             <TableRow>
               <TableCell>ID</TableCell>
@@ -76,6 +74,7 @@ const InventoryOverview = () => {
           </TableBody>
         </Table>
       )}
+      </Card>
     </div>
   );
 };
