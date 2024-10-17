@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, DO_NOT_USE_OR_YOU_WILL_BE_FIRED_EXPERIMENTAL_FORM_ACTIONS } from 'react';
 import { supabase } from '../lib/supabaseClient';
 import { Table, TableHeader, TableHead, TableRow, TableCell, TableBody } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
@@ -9,6 +9,7 @@ interface InventoryItem {
   description: string;
   thn_pengadaan: number;
   quantity: number;
+  harga_barang: number;
 }
 
 const InventoryInputPage = () => {
@@ -62,7 +63,8 @@ const InventoryInputPage = () => {
               <TableHead>Nama Barang</TableHead>
               <TableHead>Deskripsi</TableHead>
               <TableHead>Tahun Pengadaan</TableHead>
-              <TableHead>Jumlah</TableHead>
+              <TableHead>Jumlah Barang</TableHead>
+              <TableHead>Harga Barang</TableHead>
               <TableHead>Aksi</TableHead>
             </TableRow>
           </TableHeader>          
@@ -74,6 +76,7 @@ const InventoryInputPage = () => {
                 <TableCell>{item.description}</TableCell>
                 <TableCell>{item.thn_pengadaan}</TableCell>
                 <TableCell>{item.quantity}</TableCell>
+                <TableCell>{item.harga_barang}</TableCell>
                 <TableCell>
                   <Button onClick={() => deleteItem(item.id)}>Delete</Button>
                 </TableCell>

@@ -9,6 +9,7 @@ const InventoryInputPage = () => {
   const [description, setDescription] = useState('');
   const [quantity, setQuantity] = useState(0);
   const [thn_pengadaan, setThn_pengadaan] = useState(0);
+  const [harga_barang, setHarga_barang] = useState(0);
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
 
@@ -28,7 +29,7 @@ const InventoryInputPage = () => {
       const { data, error } = await supabase
         .from('inventory')  // Pastikan nama tabel sesuai dengan di Supabase
         .insert([
-          { name, description, quantity, thn_pengadaan }
+          { name, description, quantity, thn_pengadaan, harga_barang }
         ]);
 
       if (error) throw error;
@@ -88,6 +89,14 @@ const InventoryInputPage = () => {
             type="number"
             value={quantity}
             onChange={(e) => setQuantity(Number(e.target.value))}
+            />
+        </div>
+        <div>
+          <Label>Harga Barang</Label>
+          <Input
+            type="number"
+            value={harga_barang}
+            onChange={(e) => setHarga_barang(Number(e.target.value))}
             />
         </div>
         <Button type="submit">Tambah Barang</Button>
