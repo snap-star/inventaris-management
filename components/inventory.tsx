@@ -44,13 +44,13 @@ const InventoryInputPage = () => {
   return (
     <div>
       <Card>
-        <CardTitle>
+        <CardTitle className='flex-1 px-2 py-2'>
         <h1>Input Barang Baru</h1>
         </CardTitle>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
 
-      <CardContent>
+      <CardContent className='flex-1 px-2 py-2'>
 
         <form onSubmit={handleSubmit}>
         <div>
