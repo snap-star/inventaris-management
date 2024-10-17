@@ -1,5 +1,17 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabaseClient'; // Pastikan path sesuai dengan struktur project
+import { Label } from 'recharts';
+import { Card, CardContent, CardTitle } from '@/components/ui/card';
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+
 
 interface InventoryItem {
   id: number;
@@ -37,30 +49,32 @@ const InventoryOverview = () => {
 
   return (
     <div>
+      <Label>
       <h1>Inventory Overview</h1>
+      </Label>
       {items.length === 0 ? (
         <p>No items found.</p>
       ) : (
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Nama</th>
-              <th>Deskripsi</th>
-              <th>Jumlah</th>
-            </tr>
-          </thead>
-          <tbody>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>ID</TableCell>
+              <TableCell>Nama</TableCell>
+              <TableCell>Deskripsi</TableCell>
+              <TableCell>Jumlah</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
             {items.map((item) => (
-              <tr key={item.id}>
-                <td>{item.id}</td>
-                <td>{item.name}</td>
-                <td>{item.description}</td>
-                <td>{item.quantity}</td>
-              </tr>
+              <TableRow key={item.id}>
+                <TableCell>{item.id}</TableCell>
+                <TableCell>{item.name}</TableCell>
+                <TableCell>{item.description}</TableCell>
+                <TableCell>{item.quantity}</TableCell>
+              </TableRow>
             ))}
-          </tbody>
-        </table>
+          </TableBody>
+        </Table>
       )}
     </div>
   );
