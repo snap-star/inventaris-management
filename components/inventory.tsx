@@ -1,3 +1,7 @@
+import { Button } from './ui/button';
+import { Input } from './ui/input';
+import { Label } from './ui/label';
+import { Card, CardContent, CardTitle } from './ui/card';
 import { useState } from 'react';
 import { supabase } from '../lib/supabaseClient';
 const InventoryInputPage = () => {
@@ -39,37 +43,48 @@ const InventoryInputPage = () => {
 
   return (
     <div>
-      <h1>Input Barang Baru</h1>
+      <Card>
+        <CardTitle>
+        <h1>Input Barang Baru</h1>
+        </CardTitle>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
 
-      <form onSubmit={handleSubmit}>
+      <CardContent>
+
+        <form onSubmit={handleSubmit}>
         <div>
-          <label>Nama Barang</label>
-          <input
+          <Label>
+          Nama Barang
+          </Label>
+          <Input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-          />
+            />
         </div>
         <div>
-          <label>Deskripsi</label>
-          <input
+          <Label>
+            Deskripsi
+          </Label>
+          <Input
             type="text"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-          />
+            />
         </div>
         <div>
-          <label>Jumlah</label>
-          <input
+          <Label>Jumlah</Label>
+          <Input
             type="number"
             value={quantity}
             onChange={(e) => setQuantity(Number(e.target.value))}
-          />
+            />
         </div>
-        <button type="submit">Tambah Barang</button>
-      </form>
+        <Button type="submit">Tambah Barang</Button>
+        </form>
+      </CardContent>
+      </Card>
     </div>
   );
 };
