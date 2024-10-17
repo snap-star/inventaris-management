@@ -14,7 +14,7 @@ const navigationItems: SidebarItem[] = [
   },
   {
     name: "Input Data Barang",
-    href: "/inventory/input",
+    href: "/inventory",
     icon: Package,
     type: "item",
   },
