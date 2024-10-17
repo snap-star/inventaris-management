@@ -7,6 +7,7 @@ interface InventoryItem {
   id: number;
   name: string;
   description: string;
+  thn_pengadaan: number;
   quantity: number;
 }
 
@@ -60,6 +61,7 @@ const InventoryInputPage = () => {
               <TableHead>ID</TableHead>
               <TableHead>Nama Barang</TableHead>
               <TableHead>Deskripsi</TableHead>
+              <TableHead>Tahun Pengadaan</TableHead>
               <TableHead>Jumlah</TableHead>
               <TableHead>Aksi</TableHead>
             </TableRow>
@@ -70,6 +72,7 @@ const InventoryInputPage = () => {
                 <TableCell>{item.id}</TableCell>
                 <TableCell>{item.name}</TableCell>
                 <TableCell>{item.description}</TableCell>
+                <TableCell>{item.thn_pengadaan}</TableCell>
                 <TableCell>{item.quantity}</TableCell>
                 <TableCell>
                   <Button onClick={() => deleteItem(item.id)}>Delete</Button>
