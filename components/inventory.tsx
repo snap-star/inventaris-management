@@ -94,7 +94,7 @@ const InventoryInputPage = () => {
         <div>
           <Label>Harga Barang</Label>
           <Input
-            type="number"
+            type="text"
             value={harga_barang}
             onChange={(e) => setHarga_barang(Number(e.target.value))}
             />
