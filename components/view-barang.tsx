@@ -1,16 +1,7 @@
-import { useEffect, useState } from 'react';
-import { supabase } from '../lib/supabaseClient'; // Pastikan path sesuai dengan struktur project Anda
-import { Card, CardContent, CardTitle } from '@/components/ui/card';
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
-
+import { useState, useEffect } from 'react';
+import { supabase } from '../lib/supabaseClient';
+import { Table, TableHead, TableRow, TableCell, TableBody } from '@/components/ui/table';
+import { Button } from '@/components/ui/button';
 
 interface InventoryItem {
   id: number;
@@ -19,47 +10,58 @@ interface InventoryItem {
   quantity: number;
 }
 
-const InventoryOverview = () => {
+const InventoryInputPage = () => {
   const [items, setItems] = useState<InventoryItem[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchItems = async () => {
-      setLoading(true);
-
-      // Fetch data dari Supabase
-      const { data, error } = await supabase
-        .from('inventory')  // Nama tabel sesuai dengan yang ada di Supabase
-        .select('*');       // Ambil semua kolom
-
-      if (error) {
-        console.error('Error fetching data: ', error);
-      } else {
-        setItems(data as InventoryItem[]);
-      }
-
-      setLoading(false);
-    };
-
     fetchItems();
   }, []);
+
+  const fetchItems = async () => {
+    setLoading(true);
+
+    const { data, error } = await supabase.from('inventory').select('*');
+
+    if (error) {
+      console.error('Error fetching data: ', error);
+    } else {
+      setItems(data as InventoryItem[]);
+    }
+
+    setLoading(false);
+  };
+
+  const deleteItem = async (id: number) => {
+    try {
+      const { error } = await supabase.from('inventory').delete().eq('id', id);
+
+      if (error) {
+        console.error('Error deleting item: ', error);
+      } else {
+        fetchItems();
+      }
+    } catch (err: unknown) {
+      console.error('Error deleting item: ', err);
+    }
+  };
 
   if (loading) return <p>Loading...</p>;
 
   return (
     <div>
-      <Card>
-        <h1>Inventory Overview</h1>
+      <h1>Inventory Overview</h1>
       {items.length === 0 ? (
         <p>No items found.</p>
-        ) : (
-          <Table>
+      ) : (
+        <Table>
           <TableHead>
             <TableRow>
               <TableCell>ID</TableCell>
-              <TableCell>Nama</TableCell>
+              <TableCell>Nama Barang</TableCell>
               <TableCell>Deskripsi</TableCell>
               <TableCell>Jumlah</TableCell>
+              <TableCell>Aksi</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -69,14 +71,16 @@ const InventoryOverview = () => {
                 <TableCell>{item.name}</TableCell>
                 <TableCell>{item.description}</TableCell>
                 <TableCell>{item.quantity}</TableCell>
+                <TableCell>
+                  <Button onClick={() => deleteItem(item.id)}>Delete</Button>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       )}
-      </Card>
     </div>
   );
 };
 
-export default InventoryOverview;
+export default InventoryInputPage;
