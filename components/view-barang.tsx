@@ -57,21 +57,21 @@ const InventoryInputPage = () => {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>ID</TableCell>
-              <TableCell>Nama Barang</TableCell>
-              <TableCell>Deskripsi</TableCell>
-              <TableCell>Jumlah</TableCell>
-              <TableCell>Aksi</TableCell>
+              <TableCell style={{ width: '10%' }}>ID</TableCell>
+              <TableCell style={{ width: '30%' }}>Nama Barang</TableCell>
+              <TableCell style={{ width: '30%' }}>Deskripsi</TableCell>
+              <TableCell style={{ width: '15%' }}>Jumlah</TableCell>
+              <TableCell style={{ width: '15%' }}>Aksi</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {items.map((item) => (
               <TableRow key={item.id}>
-                <TableCell>{item.id}</TableCell>
-                <TableCell>{item.name}</TableCell>
-                <TableCell>{item.description}</TableCell>
-                <TableCell>{item.quantity}</TableCell>
-                <TableCell>
+                <TableCell style={{ width: '10%' }}>{item.id}</TableCell>
+                <TableCell style={{ width: '30%' }}>{item.name}</TableCell>
+                <TableCell style={{ width: '30%' }}>{item.description}</TableCell>
+                <TableCell style={{ width: '15%' }}>{item.quantity}</TableCell>
+                <TableCell style={{ width: '15%' }}>
                   <Button onClick={() => deleteItem(item.id)}>Delete</Button>
                 </TableCell>
               </TableRow>
