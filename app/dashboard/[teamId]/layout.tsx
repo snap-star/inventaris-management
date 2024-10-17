@@ -8,7 +8,7 @@ import { useParams, useRouter } from "next/navigation";
 const navigationItems: SidebarItem[] = [
   {
     name: "Overview",
-    href: "/dashboard",
+    href: "/dashboard/[teamId]",
     icon: Globe,
     type: "item",
   },
@@ -16,12 +16,6 @@ const navigationItems: SidebarItem[] = [
     name: "Input Data Barang",
     href: "/inventory",
     icon: Package,
-    type: "item",
-  },
-  {
-    name: "Configuration",
-    href: "/configuration",
-    icon: Settings2,
     type: "item",
   },
 ];

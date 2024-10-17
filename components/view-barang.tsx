@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabaseClient';
-import { Table, TableHead, TableRow, TableCell, TableBody } from '@/components/ui/table';
+import { Table, TableHeader, TableHead, TableRow, TableCell, TableBody } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 
 interface InventoryItem {
@@ -55,23 +55,23 @@ const InventoryInputPage = () => {
         <p>No items found.</p>
       ) : (
         <Table>
-          <TableHead>
+          <TableHeader>
             <TableRow>
-              <TableCell style={{ width: '10%' }}>ID</TableCell>
-              <TableCell style={{ width: '30%' }}>Nama Barang</TableCell>
-              <TableCell style={{ width: '30%' }}>Deskripsi</TableCell>
-              <TableCell style={{ width: '15%' }}>Jumlah</TableCell>
-              <TableCell style={{ width: '15%' }}>Aksi</TableCell>
+              <TableHead>ID</TableHead>
+              <TableHead>Nama Barang</TableHead>
+              <TableHead>Deskripsi</TableHead>
+              <TableHead>Jumlah</TableHead>
+              <TableHead>Aksi</TableHead>
             </TableRow>
-          </TableHead>
+          </TableHeader>          
           <TableBody>
             {items.map((item) => (
               <TableRow key={item.id}>
-                <TableCell style={{ width: '10%' }}>{item.id}</TableCell>
-                <TableCell style={{ width: '30%' }}>{item.name}</TableCell>
-                <TableCell style={{ width: '30%' }}>{item.description}</TableCell>
-                <TableCell style={{ width: '15%' }}>{item.quantity}</TableCell>
-                <TableCell style={{ width: '15%' }}>
+                <TableCell>{item.id}</TableCell>
+                <TableCell>{item.name}</TableCell>
+                <TableCell>{item.description}</TableCell>
+                <TableCell>{item.quantity}</TableCell>
+                <TableCell>
                   <Button onClick={() => deleteItem(item.id)}>Delete</Button>
                 </TableCell>
               </TableRow>

@@ -17,7 +17,7 @@ export default function DashboardPage() {
             <h2 className="text-2xl font-bold tracking-tight">Data Barang</h2>
           </div>
           <div>
-            <Card className="flex py-5 md-5">
+            <Card className="flex-1 px-2 py-2">
               <InventoryOverview />
             </Card>
           </div>
