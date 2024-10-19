@@ -124,8 +124,8 @@ const InventoryInputPage = () => {
                 <TableCell>{item.lokasi}</TableCell>
                 <TableCell>
                   <div className='flex-1 px-1 py-1'>
-                  <Button onClick={() => deleteItem(item.id)}>Delete</Button>
-                  <Button onClick={() => openEditDialog(item)}>Pilih Edit</Button>
+                  <Button variant="destructive" onClick={() => deleteItem(item.id)}>Delete</Button>
+                  <Button variant="secondary" onClick={() => openEditDialog(item)}>Pilih Edit</Button>
                   </div>
                 </TableCell>
               </TableRow>
@@ -138,7 +138,7 @@ const InventoryInputPage = () => {
         <Dialog>
           <DialogTrigger asChild>
             <div className='flex-1 px-1 py-1'>
-            <Button>Edit</Button>
+            <Button variant="secondary">Edit</Button>
             </div>
           </DialogTrigger>
           <DialogContent>
