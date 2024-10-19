@@ -117,13 +117,13 @@ const InventoryInputPage = () => {
                 <TableCell>{item.name}</TableCell>
                 <TableCell>{item.description}</TableCell>
                 <TableCell>{item.thn_pengadaan}</TableCell>
-                <TableCell>{item.tanggal_pembelian.toLocaleDateString()}</TableCell>
+                <TableCell>{item.tanggal_pembelian.toLocaleString("id-ID", { dateStyle: "full"})}</TableCell>
                 <TableCell>{item.quantity}</TableCell>
                 <TableCell>{item.harga_barang.toLocaleString ("id-ID", { style: "currency", currency: "IDR"})}</TableCell>
                 <TableCell>
                   <div className='flex-1 px-1 py-1'>
                   <Button onClick={() => deleteItem(item.id)}>Delete</Button>
-                  <Button onClick={() => openEditDialog(item)}>Edit</Button>
+                  <Button onClick={() => openEditDialog(item)}>Pilih Edit</Button>
                   </div>
                 </TableCell>
               </TableRow>
