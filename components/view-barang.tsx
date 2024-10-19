@@ -15,6 +15,7 @@ interface InventoryItem {
   harga_barang: number;
   nomor_register: string;
   tanggal_pembelian: Date;
+  lokasi: string;
 }
 
 const InventoryInputPage = () => {
@@ -106,6 +107,7 @@ const InventoryInputPage = () => {
               <TableHead>Tanggal Pembelian</TableHead>
               <TableHead>Jumlah Barang</TableHead>
               <TableHead>Harga Barang</TableHead>
+              <TableHead>Lokasi</TableHead>
               <TableHead>Aksi</TableHead>
             </TableRow>
           </TableHeader>          
@@ -120,6 +122,7 @@ const InventoryInputPage = () => {
                 <TableCell>{item.tanggal_pembelian?.toLocaleString("id-ID", { dateStyle: "full"})}</TableCell>
                 <TableCell>{item.quantity}</TableCell>
                 <TableCell>{item.harga_barang.toLocaleString ("id-ID", { style: "currency", currency: "IDR"})}</TableCell>
+                <TableCell>{item.lokasi}</TableCell>
                 <TableCell>
                   <div className='flex-1 px-1 py-1'>
                   <Button onClick={() => deleteItem(item.id)}>Delete</Button>
@@ -179,6 +182,10 @@ const InventoryInputPage = () => {
                 <Label>
                   Harga Barang:
                   <Input type="text" value={selectedItem.harga_barang} onChange={(e) => setSelectedItem({ ...selectedItem, harga_barang: parseInt(e.target.value) })} />
+                </Label>
+                <Label>
+                  Lokasi:
+                  <Input type="text" value={selectedItem.lokasi} onChange={(e) => setSelectedItem({ ...selectedItem, lokasi: e.target.value})} />
                 </Label>
                 <div mx-2 px-2>
                 <Button type="submit">Save</Button>

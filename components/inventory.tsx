@@ -2,9 +2,8 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { Card, CardContent, CardTitle } from './ui/card';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { supabase } from '../lib/supabaseClient';
-import { Calendar } from './ui/calendar';
 
 const InventoryInputPage = () => {
   const [name, setName] = useState('');
@@ -14,6 +13,7 @@ const InventoryInputPage = () => {
   const [harga_barang, setHarga_barang] = useState(0);
   const [nomor_register, setNomor_register] = useState('');
   const [tanggal_pembelian, setTanggal_pembelian] = useState('');
+  const [lokasi, setLokasi] = useState('');
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
 
@@ -33,7 +33,7 @@ const InventoryInputPage = () => {
       const { data, error } = await supabase
         .from('inventory')  // Pastikan nama tabel sesuai dengan di Supabase
         .insert([
-          { name, description, quantity, thn_pengadaan, harga_barang, nomor_register }
+          { name, description, quantity, thn_pengadaan, harga_barang, nomor_register, tanggal_pembelian, lokasi}
         ]);
 
       if (error) throw error;
@@ -121,6 +121,13 @@ const InventoryInputPage = () => {
             type="date"
             value={tanggal_pembelian ? tanggal_pembelian.toString().split('T')[0] : ''}
             onChange={(e) => setTanggal_pembelian(e.target.value ? new Date(e.target.value).toISOString().split('T')[0] : '')}
+          />
+        </div>
+        <div>
+          <Label>Lokasi</Label>
+          <Input type="text" 
+          value={lokasi}
+          onChange={(e) => setLokasi(e.target.value)}
           />
         </div>
         <div flex-1 px-1 py-1>
