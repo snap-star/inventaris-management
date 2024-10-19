@@ -107,15 +107,17 @@ const InventoryInputPage = () => {
           <TableBody>
             {items.map((item) => (
               <TableRow key={item.id}>
-                <TableCell>{item.id}</TableCell>
-                <TableCell>{item.name}</TableCell>
-                <TableCell>{item.description}</TableCell>
-                <TableCell>{item.thn_pengadaan}</TableCell>
-                <TableCell>{item.quantity}</TableCell>
-                <TableCell>{item.harga_barang.toLocaleString ("id-ID", { style: "currency", currency: "IDR"})}</TableCell>
-                <TableCell>
+                <TableCell mx-2>{item.id}</TableCell>
+                <TableCell mx-2>{item.name}</TableCell>
+                <TableCell mx-2>{item.description}</TableCell>
+                <TableCell mx-2>{item.thn_pengadaan}</TableCell>
+                <TableCell mx-2>{item.quantity}</TableCell>
+                <TableCell mx-2>{item.harga_barang.toLocaleString ("id-ID", { style: "currency", currency: "IDR"})}</TableCell>
+                <TableCell mx-2>
+                  <div px-2>
                   <Button onClick={() => deleteItem(item.id)}>Delete</Button>
                   <Button onClick={() => openEditDialog(item)}>Edit</Button>
+                  </div>
                 </TableCell>
               </TableRow>
             ))}
@@ -155,7 +157,9 @@ const InventoryInputPage = () => {
                   Harga Barang:
                   <Input type="Number" value={selectedItem.harga_barang} onChange={(e) => setSelectedItem({ ...selectedItem, harga_barang: parseInt(e.target.value) })} />
                 </label>
+                <div mx-2 px-2>
                 <Button type="submit">Save</Button>
+                </div>
               </form>
             </DialogDescription>
           </DialogContent>
