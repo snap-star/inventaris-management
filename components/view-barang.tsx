@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabaseClient';
 import { Table, TableHeader, TableHead, TableRow, TableCell, TableBody } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { Dialog, DialogTrigger, DialogContent, DialogClose, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 
 interface InventoryItem {
@@ -136,23 +137,23 @@ const InventoryInputPage = () => {
                 {/* Render the input fields for editing the item properties */}
                 <label>
                   Name:
-                  <input type="text" value={selectedItem.name} onChange={(e) => setSelectedItem({ ...selectedItem, name: e.target.value })} />
+                  <Input type="text" value={selectedItem.name} onChange={(e) => setSelectedItem({ ...selectedItem, name: e.target.value })} />
                 </label>
                 <label>
                   Description:
-                  <input type="text" value={selectedItem.description} onChange={(e) => setSelectedItem({ ...selectedItem, description: e.target.value })} />
+                  <Input type="text" value={selectedItem.description} onChange={(e) => setSelectedItem({ ...selectedItem, description: e.target.value })} />
                 </label>
                 <label>
                   Tahun Pengadaan:
-                  <input type="Number" value={selectedItem.thn_pengadaan} onChange={(e) => setSelectedItem({ ...selectedItem, thn_pengadaan: parseInt(e.target.value) })} />
+                  <Input type="Number" value={selectedItem.thn_pengadaan} onChange={(e) => setSelectedItem({ ...selectedItem, thn_pengadaan: parseInt(e.target.value) })} />
                 </label>
                 <label>
                   Jumlah Barang:
-                  <input type="Number" value={selectedItem.quantity} onChange={(e) => setSelectedItem({ ...selectedItem, quantity: parseInt(e.target.value) })} />
+                  <Input type="Number" value={selectedItem.quantity} onChange={(e) => setSelectedItem({ ...selectedItem, quantity: parseInt(e.target.value) })} />
                 </label>
                 <label>
                   Harga Barang:
-                  <input type="Number" value={selectedItem.harga_barang} onChange={(e) => setSelectedItem({ ...selectedItem, harga_barang: parseInt(e.target.value) })} />
+                  <Input type="Number" value={selectedItem.harga_barang} onChange={(e) => setSelectedItem({ ...selectedItem, harga_barang: parseInt(e.target.value) })} />
                 </label>
                 <Button type="submit">Save</Button>
               </form>
