@@ -17,10 +17,10 @@ export default function inventory() {
           <CardDescription>
             Input data barang baru dengan mengisi form di bawah ini.
           </CardDescription>
+        </CardHeader>
           <CardContent>
             <InventoryInputPage />
           </CardContent>
-        </CardHeader>
       </Card>
     </div>
   );
