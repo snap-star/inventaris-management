@@ -117,7 +117,11 @@ const InventoryInputPage = () => {
         </div>
         <div>
           <Label>Tanggal Pembelian</Label>
-          <Input type="date" value={tanggal_pembelian} onChange={(e) => setTanggal_pembelian(e.target.value)} />
+            <Input
+            type="date"
+            value={tanggal_pembelian ? tanggal_pembelian.toString().split('T')[0] : ''}
+            onChange={(e) => setTanggal_pembelian(e.target.value ? new Date(e.target.value).toISOString().split('T')[0] : '')}
+          />
         </div>
         <div flex-1 px-1 py-1>
         <Button type="submit">Tambah Barang</Button>
