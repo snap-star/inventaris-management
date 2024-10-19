@@ -117,7 +117,7 @@ const InventoryInputPage = () => {
                 <TableCell>{item.name}</TableCell>
                 <TableCell>{item.description}</TableCell>
                 <TableCell>{item.thn_pengadaan}</TableCell>
-                <TableCell>{item.tanggal_pembelian.toLocaleString("id-ID", { dateStyle: "full"})}</TableCell>
+                <TableCell>{item.tanggal_pembelian?.toLocaleString("id-ID", { dateStyle: "full"})}</TableCell>
                 <TableCell>{item.quantity}</TableCell>
                 <TableCell>{item.harga_barang.toLocaleString ("id-ID", { style: "currency", currency: "IDR"})}</TableCell>
                 <TableCell>
