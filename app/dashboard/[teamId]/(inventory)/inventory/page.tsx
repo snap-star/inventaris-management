@@ -11,6 +11,7 @@ import {
 export default function inventory() {
   return (
     <div>
+      <Card>
         <CardHeader>
           <CardTitle>Input Data Barang</CardTitle>
           <CardDescription>
@@ -20,6 +21,7 @@ export default function inventory() {
             <InventoryInputPage />
           </CardContent>
         </CardHeader>
+      </Card>
     </div>
   );
 }

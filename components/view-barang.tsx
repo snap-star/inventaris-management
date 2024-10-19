@@ -91,8 +91,7 @@ const InventoryInputPage = () => {
   if (loading) return <p>Loading...</p>;
 
   return (
-    <div>
-      <h1>Inventory Overview</h1>
+    <div flex-1>
       {items.length === 0 ? (
         <p>Tidak Ada Data Di Temukan.</p>
       ) : (

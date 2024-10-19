@@ -18,7 +18,15 @@ export default function DashboardPage() {
           </div>
           <div>
             <Card className="flex-1 px-2 py-2">
+              <CardHeader>
+                <CardTitle>Data Barang</CardTitle>
+                <CardDescription>
+                  Berikut adalah data barang yang ada di dalam sistem
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
               <InventoryOverview />
+              </CardContent>
             </Card>
           </div>
         </div>
