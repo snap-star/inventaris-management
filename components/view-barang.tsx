@@ -166,10 +166,10 @@ const InventoryInputPage = () => {
                 </Label>
                 <Label>
                   Tanggal Pembelian:
-                  <Input
-                    type="date"
-                    value={selectedItem.tanggal_pembelian.toISOString().split('T')[0]}
-                    onChange={(e) => setSelectedItem({ ...selectedItem, tanggal_pembelian: new Date(e.target.value) })}
+                <Input
+                  type="date"
+                  value={selectedItem.tanggal_pembelian instanceof Date ? selectedItem.tanggal_pembelian.toISOString().split('T')[0] : ''}
+                  onChange={(e) => setSelectedItem({ ...selectedItem, tanggal_pembelian: new Date(e.target.value) })}
                   />
                 </Label>
                 <Label>
