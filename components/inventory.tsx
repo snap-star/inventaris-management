@@ -4,12 +4,16 @@ import { Label } from './ui/label';
 import { Card, CardContent, CardTitle } from './ui/card';
 import { useState } from 'react';
 import { supabase } from '../lib/supabaseClient';
+import { Calendar } from './ui/calendar';
+
 const InventoryInputPage = () => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [quantity, setQuantity] = useState(0);
   const [thn_pengadaan, setThn_pengadaan] = useState(0);
   const [harga_barang, setHarga_barang] = useState(0);
+  const [nomor_register, setNomor_register] = useState('');
+  const [tanggal_pembelian, setTanggal_pembelian] = useState('');
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
 
@@ -29,7 +33,7 @@ const InventoryInputPage = () => {
       const { data, error } = await supabase
         .from('inventory')  // Pastikan nama tabel sesuai dengan di Supabase
         .insert([
-          { name, description, quantity, thn_pengadaan, harga_barang }
+          { name, description, quantity, thn_pengadaan, harga_barang, nomor_register }
         ]);
 
       if (error) throw error;
@@ -38,6 +42,10 @@ const InventoryInputPage = () => {
       setName('');
       setDescription('');
       setQuantity(0);
+      setThn_pengadaan(0);
+      setHarga_barang(0);
+      setNomor_register('');
+      setTanggal_pembelian('');
     } catch (err: unknown) { // Explicitly type the 'err' variable
       setError(`Error: ${(err as Error).message}`);
     }
@@ -56,6 +64,14 @@ const InventoryInputPage = () => {
 
         <form onSubmit={handleSubmit}>
         <div>
+          <Label>
+            Nomor Register
+          </Label>
+          <Input
+            type="text"
+            value={nomor_register}
+            onChange={(e) => setNomor_register(e.target.value)}
+            />
           <Label>
           Nama Barang
           </Label>
@@ -99,7 +115,13 @@ const InventoryInputPage = () => {
             onChange={(e) => setHarga_barang(Number(e.target.value))}
             />
         </div>
+        <div>
+          <Label>Tanggal Pembelian</Label>
+          <Input type="date" value={tanggal_pembelian} onChange={(e) => setTanggal_pembelian(e.target.value)} />
+        </div>
+        <div flex-1 px-1 py-1>
         <Button type="submit">Tambah Barang</Button>
+        </div>
         </form>
       </CardContent>
       </Card>

@@ -3,6 +3,7 @@ import { supabase } from '../lib/supabaseClient';
 import { Table, TableHeader, TableHead, TableRow, TableCell, TableBody } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import { Dialog, DialogTrigger, DialogContent, DialogClose, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 
 interface InventoryItem {
@@ -12,6 +13,8 @@ interface InventoryItem {
   thn_pengadaan: number;
   quantity: number;
   harga_barang: number;
+  nomor_register: string;
+  tanggal_pembelian: Date;
 }
 
 const InventoryInputPage = () => {
@@ -92,13 +95,15 @@ const InventoryInputPage = () => {
       {items.length === 0 ? (
         <p>Tidak Ada Data Di Temukan.</p>
       ) : (
-        <Table>
+        <Table flex-1 px-1 py-1>
           <TableHeader>
             <TableRow>
               <TableHead>ID</TableHead>
+              <TableHead>Nomor Register</TableHead>
               <TableHead>Nama Barang</TableHead>
               <TableHead>Deskripsi</TableHead>
               <TableHead>Tahun Pengadaan</TableHead>
+              <TableHead>Tanggal Pembelian</TableHead>
               <TableHead>Jumlah Barang</TableHead>
               <TableHead>Harga Barang</TableHead>
               <TableHead>Aksi</TableHead>
@@ -107,14 +112,16 @@ const InventoryInputPage = () => {
           <TableBody>
             {items.map((item) => (
               <TableRow key={item.id}>
-                <TableCell mx-2>{item.id}</TableCell>
-                <TableCell mx-2>{item.name}</TableCell>
-                <TableCell mx-2>{item.description}</TableCell>
-                <TableCell mx-2>{item.thn_pengadaan}</TableCell>
-                <TableCell mx-2>{item.quantity}</TableCell>
-                <TableCell mx-2>{item.harga_barang.toLocaleString ("id-ID", { style: "currency", currency: "IDR"})}</TableCell>
-                <TableCell mx-2>
-                  <div px-2>
+                <TableCell>{item.id}</TableCell>
+                <TableCell>{item.nomor_register}</TableCell>
+                <TableCell>{item.name}</TableCell>
+                <TableCell>{item.description}</TableCell>
+                <TableCell>{item.thn_pengadaan}</TableCell>
+                <TableCell>{item.tanggal_pembelian.toLocaleDateString()}</TableCell>
+                <TableCell>{item.quantity}</TableCell>
+                <TableCell>{item.harga_barang.toLocaleString ("id-ID", { style: "currency", currency: "IDR"})}</TableCell>
+                <TableCell>
+                  <div className='flex-1 px-1 py-1'>
                   <Button onClick={() => deleteItem(item.id)}>Delete</Button>
                   <Button onClick={() => openEditDialog(item)}>Edit</Button>
                   </div>
@@ -128,7 +135,9 @@ const InventoryInputPage = () => {
       {isEditDialogOpen && selectedItem && (
         <Dialog>
           <DialogTrigger asChild>
+            <div className='flex-1 px-1 py-1'>
             <Button>Edit</Button>
+            </div>
           </DialogTrigger>
           <DialogContent>
             <DialogTitle>Edit Item</DialogTitle>
@@ -137,26 +146,40 @@ const InventoryInputPage = () => {
               {/* Render the form to edit the item */}
               <form onSubmit={handleEditItem}>
                 {/* Render the input fields for editing the item properties */}
-                <label>
+                <Label>
+                  Nomor Register:
+                  <Input type="text" value={selectedItem.nomor_register} onChange={(e) => setSelectedItem({ ...selectedItem, nomor_register: e.target.value})} />
+                </Label>
+                <Label>
                   Name:
                   <Input type="text" value={selectedItem.name} onChange={(e) => setSelectedItem({ ...selectedItem, name: e.target.value })} />
-                </label>
-                <label>
+                </Label>
+                <Label>
                   Description:
                   <Input type="text" value={selectedItem.description} onChange={(e) => setSelectedItem({ ...selectedItem, description: e.target.value })} />
-                </label>
-                <label>
+                </Label>
+                <Label>
                   Tahun Pengadaan:
-                  <Input type="Number" value={selectedItem.thn_pengadaan} onChange={(e) => setSelectedItem({ ...selectedItem, thn_pengadaan: parseInt(e.target.value) })} />
-                </label>
-                <label>
+                  <Input type="text"
+                    value={selectedItem.thn_pengadaan}
+                    onChange={(e) => setSelectedItem({ ...selectedItem, thn_pengadaan: parseInt(e.target.value) })} />
+                </Label>
+                <Label>
+                  Tanggal Pembelian:
+                  <Input
+                    type="date"
+                    value={selectedItem.tanggal_pembelian.toISOString().split('T')[0]}
+                    onChange={(e) => setSelectedItem({ ...selectedItem, tanggal_pembelian: new Date(e.target.value) })}
+                  />
+                </Label>
+                <Label>
                   Jumlah Barang:
                   <Input type="Number" value={selectedItem.quantity} onChange={(e) => setSelectedItem({ ...selectedItem, quantity: parseInt(e.target.value) })} />
-                </label>
-                <label>
+                </Label>
+                <Label>
                   Harga Barang:
-                  <Input type="Number" value={selectedItem.harga_barang} onChange={(e) => setSelectedItem({ ...selectedItem, harga_barang: parseInt(e.target.value) })} />
-                </label>
+                  <Input type="text" value={selectedItem.harga_barang} onChange={(e) => setSelectedItem({ ...selectedItem, harga_barang: parseInt(e.target.value) })} />
+                </Label>
                 <div mx-2 px-2>
                 <Button type="submit">Save</Button>
                 </div>
