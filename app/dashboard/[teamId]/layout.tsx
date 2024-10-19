@@ -2,7 +2,7 @@
 
 import SidebarLayout, { SidebarItem } from "@/components/sidebar-layout";
 import { SelectedTeamSwitcher, useUser } from "@stackframe/stack";
-import { BadgePercent, BarChart4, Columns3, Globe, HomeIcon, Locate, Package, Settings2, ShoppingBag, ShoppingCart, Users } from "lucide-react";
+import { BadgePercent, BarChart4, Columns3, Globe, HomeIcon, Locate, Package, Settings2, ShoppingBag, ShoppingCart, Users, Wrench } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 
 const navigationItems: SidebarItem[] = [
@@ -16,6 +16,18 @@ const navigationItems: SidebarItem[] = [
     name: "Input Data Barang",
     href: "/inventory",
     icon: Package,
+    type: "item",
+  },
+  {
+    name: "Prefix No.Register",
+    href: "/prefix",
+    icon: Wrench,
+    type: "item",
+  },
+  {
+    name: "User",
+    href: "/user",
+    icon: Users,
     type: "item",
   },
   {
