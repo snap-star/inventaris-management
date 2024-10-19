@@ -2,7 +2,7 @@
 
 import SidebarLayout, { SidebarItem } from "@/components/sidebar-layout";
 import { SelectedTeamSwitcher, useUser } from "@stackframe/stack";
-import { BadgePercent, BarChart4, Columns3, Globe, HomeIcon, Locate, Package, Settings2, ShoppingBag, ShoppingCart, Users, Wrench } from "lucide-react";
+import { BadgePercent, BarChart4, Columns3, Globe, HomeIcon, Locate, Package, Settings, Settings2, ShoppingBag, ShoppingCart, Users, Wrench } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 
 const navigationItems: SidebarItem[] = [
@@ -33,7 +33,7 @@ const navigationItems: SidebarItem[] = [
   {
     name: "Setting",
     href: "/setting",
-    icon: Settings2,
+    icon: Settings,
     type: "item",
   }
 ];
